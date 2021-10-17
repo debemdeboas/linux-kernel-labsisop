@@ -27,6 +27,7 @@ static int noop_dispatch(struct request_queue *q, int force)
 	if (rq) {
 		list_del_init(&rq->queuelist);
 		elv_dispatch_sort(q, rq);
+		printk("[NOOP][noop_dispatch] %llu", blk_rq_pos(rq));
 		return 1;
 	}
 	return 0;
